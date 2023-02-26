@@ -1,11 +1,11 @@
 import type { PageServerLoad } from './$types';
 import { api } from '$lib/stores';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.token) throw redirect(302, '/user/login');
 	const response = await (
-		await fetch(`${api}/user/services`, {
+		await fetch(`${api}/user/services/applied`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${locals.token}`
@@ -16,12 +16,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 		const { services, user } = response.data;
 		return {
 			user,
-			services: {
-				applied: services.applied,
-				approved: services.approved,
-				available: services.available
-			}
+			services
 		};
 	}
-	throw redirect(302, '/user/logout');
+	throw error(response.status, response.message ?? 'Unknown error occurred');
 };

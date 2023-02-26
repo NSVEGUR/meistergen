@@ -42,7 +42,7 @@ export const actions = {
 			return fail(400, { missing: true });
 		}
 		const response = await (
-			await fetch(`${api}/user/services/apply/${params.service}`, {
+			await fetch(`${api}/user/services/available/${params.service}`, {
 				method: 'POST',
 				headers: {
 					Authorization: `Bearer ${locals.token}`

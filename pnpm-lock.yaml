@@ -63,7 +63,6 @@ importers:
       jsonwebtoken: ^9.0.0
       morgan: ^1.10.0
       multer: ^1.4.5-lts.1
-      nanospinner: ^1.1.0
       prisma: ^4.10.1
       puppeteer: ^19.7.2
       ts-node: ^10.9.1
@@ -81,7 +80,6 @@ importers:
       jsonwebtoken: 9.0.0
       morgan: 1.10.0
       multer: 1.4.5-lts.1
-      nanospinner: 1.1.0
       puppeteer: 19.7.2_typescript@4.9.5
       xss-clean: 0.1.1
     devDependencies:
@@ -2067,12 +2065,6 @@ packages:
     hasBin: true
     dev: true
 
-  /nanospinner/1.1.0:
-    resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
-    dependencies:
-      picocolors: 1.0.0
-    dev: false
-
   /natural-compare-lite/1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
     dev: false
@@ -2210,6 +2202,7 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
 
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}

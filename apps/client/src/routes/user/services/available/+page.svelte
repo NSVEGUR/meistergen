@@ -5,12 +5,12 @@
 <div class="services">
 	{#if $page.data.services}
 		<div>
-			Applied
+			Available
 		</div>
 		<ul>
 			{#each $page.data.services as service}
 				<li>
-					<a href={`/user/services/applied/${service.uid}`}>
+					<a href={`/user/services/available/${service.uid}`}>
 						<i class="fas fa-folder"></i>
 						{service.name}
 					</a>

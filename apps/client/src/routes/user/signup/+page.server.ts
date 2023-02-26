@@ -42,7 +42,7 @@ export const actions = {
 			password,
 			role: 'USER'
 		};
-		let response = await fetch('http://localhost:8000/user/signup', {
+		let response = await fetch(`${api}/user/signup`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

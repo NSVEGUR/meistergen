@@ -5,12 +5,12 @@
 <div class="services">
 	{#if $page.data.services}
 		<div>
-			Applied
+			Personal
 		</div>
 		<ul>
 			{#each $page.data.services as service}
 				<li>
-					<a href={`/user/services/applied/${service.uid}`}>
+					<a href={`/user/services/personal/${service.uid}`}>
 						<i class="fas fa-folder"></i>
 						{service.name}
 					</a>
@@ -18,7 +18,7 @@
 			{/each}
 		</ul>
 		{#if $page.data.services.length == 0}
-			<p>No services were applied</p>
+			<p>Zero personal services</p>
 		{/if}
 	{/if}
 </div>

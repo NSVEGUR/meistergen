@@ -2,48 +2,79 @@
 	import { page } from '$app/stores';
 </script>
 
-<table class="services">
-	<tr>
-		<th>Service</th>
-		<th>Type</th>
-		<th>Price</th>
-	</tr>
+<div class="services">
 	{#if $page.data.services}
-		{#each $page.data.services as service}
-			<tr>
-				<td><a href={`/user/services/${service.uid}`}>{service.name}</a></td>
-				<td>{service.type}</td>
-				<td>{service.price} <i class="fas fa-rupee-sign fa-sm" /></td>
-			</tr>
-		{/each}
+		{#if $page.data.services.approved.length > 0}
+			<div>Approved</div>
+			<ul>
+				{#each $page.data.services.approved as service}
+					<li>
+						<a href={`/user/services/approved/${service.uid}`}>
+							<i class="fas fa-folder"></i>
+							{service.name}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
+		{#if $page.data.services.applied.length > 0}
+			<div>Applied</div>
+			<ul>
+				{#each $page.data.services.applied as service}
+					<li>
+						<a href={`/user/services/applied/${service.uid}`}>
+							<i class="fas fa-folder"></i>
+							{service.name}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
+		{#if $page.data.services.available.length > 0}
+			<div>Available</div>
+			<ul>
+				{#each $page.data.services.available as service}
+					<li>
+						<a href={`/user/services/available/${service.uid}`}>
+							<i class="fas fa-folder"></i>
+							{service.name}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 	{/if}
-</table>
+</div>
 
 <style lang="scss">
 	.services {
 		width: 100%;
-		height: fit-content;
-		border-collapse: collapse;
-		tr {
-			height: 50px;
+		padding-top: 10px;
+		div{
+			font-size: 1.4rem;
+			padding: 5px 0;
+			border-bottom: 2px solid rgba(29, 28, 28, 0.3);
 		}
-		th {
-			text-align: left;
-		}
-		tr {
-			border-bottom: 1px solid #ddd;
-			padding: 8px;
-		}
-		td,
-		th {
-			padding-left: 10px;
-		}
-		tr:nth-child(even) {
-			background-color: var(--color-bg-2);
-		}
-		tr:not(:first-child) {
-			&:hover {
-				background-color: var(--color-bg-1);
+		ul{
+			padding: 0px;
+			list-style: none;
+			li{
+				padding: 10px;
+				border-bottom: 1px solid var(--color-bg-1);
+				cursor: pointer;
+				a{
+					color: var(--secondary-text-color);
+					margin: 0;
+					display: block;
+					height:100%;
+					width: 100%;
+					&:hover{
+						text-decoration:none;
+					}
+					.fas{
+						margin-right: 5px;
+					}
+				}
 			}
 		}
 	}

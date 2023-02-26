@@ -7,14 +7,11 @@
 	--color-bg-0: rgb(202, 216, 228);
 	--color-bg-1: hsl(209, 36%, 86%);
 	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
 	--gradient-theme-1: linear-gradient(225deg, #22e1ff 0%, #1d8fe1 48%, #015e94 100%);
+	--primary-text-color: #202020;
+	--secondary-text-color: #222222d9;
 	font-family: var(--font-body);
-	color: var(--color-text);
+	color: var(--primary-text-color);
 	box-sizing: border-box;
 }
 

@@ -19,7 +19,7 @@ model User {
   role Role
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
-  services UserService[]
+  services ServiceRequest[]
 }
 model Service {
   id Int @id @default(autoincrement())
@@ -28,18 +28,9 @@ model Service {
   type String
   price Int
   description String
-  users UserService[]
+  users ServiceRequest[]
 }
-model File{
-  id Int @id @default(autoincrement())
-  uid String @unique
-  name String
-  mimetype String
-  size Int
-  authorId Int
-  author UserService @relation(fields: [authorId], references: [id])
-}
-model UserService{
+model ServiceRequest{
   id Int @id @default(autoincrement())
   userId Int
   user User @relation(fields: [userId], references: [id])
@@ -48,6 +39,15 @@ model UserService{
   accepted Boolean @default(false)
   acceptedBy String?
   files File[]
+}
+model File{
+  id Int @id @default(autoincrement())
+  uid String @unique
+  name String
+  mimetype String
+  size Int
+  authorId Int
+  author ServiceRequest @relation(fields: [authorId], references: [id])
 }
 
 enum Role {

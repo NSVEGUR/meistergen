@@ -4,6 +4,8 @@
 	import User from '$lib/images/user.png';
 	let toggleNav = false;
 	let toggleMenu = false;
+	let route: string;
+	$: route = $page.route.id ?? '';
 </script>
 
 <main>
@@ -55,6 +57,7 @@
 			<li>All services</li>
 			<li>My services</li>
 			<li>Applied services</li>
+			<li>Available services</li>
 		</ul>
 	</nav>
 	<div class:toggle-menu={toggleMenu} class="menu">
@@ -76,18 +79,23 @@
 			<ul>
 				<a
 					href="/user/services"
-					class:active={$page.data.path ? $page.data.path == '/user/services' : true}
+					class:active={route == '/user/services'}
 					><li>All services</li></a
 				>
 				<a
-					href="/user/services/mine"
-					class:active={$page.data.path ? $page.data.path == '/user/services/mine' : true}
+					href="/user/services/personal"
+					class:active={route.includes('/user/services/personal')}
 					><li>My services</li></a
 				>
 				<a
 					href="/user/services/applied"
-					class:active={$page.data.path ? $page.data.path == '/user/services/applied' : true}
+					class:active={route.includes('/user/services/applied')}
 					><li>Applied services</li></a
+				>
+				<a
+					href="/user/services/available"
+					class:active={route.includes('/user/services/available')}
+					><li>Available services</li></a
 				>
 			</ul>
 		</nav>
