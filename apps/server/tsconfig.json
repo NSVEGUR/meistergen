@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "rootDir": "./src",
+    "typeRoots": ["@types", "./global.d.ts", "./node_modules/@types/"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
