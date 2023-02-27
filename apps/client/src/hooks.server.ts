@@ -1,6 +1,7 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 import * as Sentry from '@sentry/node';
 import { BrowserTracing } from '@sentry/tracing';
+import { api } from '$lib/stores';
 
 Sentry.init({
 	integrations: [new BrowserTracing()],
@@ -10,9 +11,24 @@ Sentry.init({
 export const handle = (async ({ event, resolve }) => {
 	const route = event.route.id;
 	if (!route) return resolve(event);
-	const token = event.cookies.get(`${route.split('/')[1]}-token`);
+	const role = route.split('/')[1];
+	const token = event.cookies.get(`${role}-token`);
 	if (!token) return resolve(event);
-	event.locals.token = token;
+	const response = await (
+		await fetch(`${api}/${role}`, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		})
+	).json();
+	if (response.status === 200) {
+		const { user } = response.data;
+		event.locals.user = {
+			email: user.email,
+			role: `${user.role}`.toLocaleLowerCase(),
+			token: token
+		};
+	}
 	return await resolve(event);
 }) satisfies Handle;
 

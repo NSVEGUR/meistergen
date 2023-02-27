@@ -77,26 +77,26 @@
 	<section>
 		<nav class="nav">
 			<ul>
-				<a
+				<li class:active={route == '/user/services'}><a
 					href="/user/services"
-					class:active={route == '/user/services'}
-					><li>All services</li></a
-				>
-				<a
+					>All services</a
+				></li>
+				<li class:active={route.includes('/user/services/personal')}>
+					<a
 					href="/user/services/personal"
-					class:active={route.includes('/user/services/personal')}
-					><li>My services</li></a
+					>My services</a
 				>
-				<a
+				</li>
+				<li class:active={route.includes('/user/services/applied')}>
+					<a
 					href="/user/services/applied"
-					class:active={route.includes('/user/services/applied')}
-					><li>Applied services</li></a
+					>Applied services</a
 				>
-				<a
+				</li>
+				<li class:active={route.includes('/user/services/available')}><a
 					href="/user/services/available"
-					class:active={route.includes('/user/services/available')}
-					><li>Available services</li></a
-				>
+					>Available services</a
+				></li>
 			</ul>
 		</nav>
 		<slot />
@@ -211,7 +211,7 @@
 			position: fixed;
 			height: 100%;
 			box-shadow: 3px 0px 5px var(--color-bg-1);
-			transform: translateX(-250px);
+			transform: translateX(-260px);
 			background: white;
 			ul {
 				width: 100%;
@@ -302,29 +302,29 @@
 				height: 100%;
 				transition: all 0.5s ease;
 				ul {
-					width: 100%;
 					list-style: none;
-					display: flex;
-					flex-direction: column;
-					align-items: start;
-					gap: 10px;
-					padding-left: 5px;
-					a {
-						display: flex;
-						color: black;
-						padding: 10px;
-						border-radius: 20px;
-						&:hover {
-							text-decoration: none;
+					padding: 0px;
+					padding-right: 10px;
+					li{
+						padding: 10px 5px;
+						font-size: 1.2rem;
+						border-radius: 0px 15px 15px 0px;
+						a{
+							margin: 0;
+							width: 100%;
+							height: 100%;
+							display: block;
+							color: var(--secondary-text-color);
+							&:hover{
+								text-decoration: none;
+							}
 						}
 					}
-					li {
-						font-weight: 900;
-						font-size: 1.15rem;
-					}
-					.active {
+					.active{
 						background: var(--gradient-theme-1);
-						color: white;
+						a{
+							color:white;
+						}
 					}
 				}
 			}
@@ -345,7 +345,7 @@
 				}
 			}
 			.toggle-nav {
-				transform: translateX(0%);
+				transform: translateX(0px);
 			}
 		}
 	}

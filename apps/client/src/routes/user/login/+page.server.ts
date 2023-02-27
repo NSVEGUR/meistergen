@@ -4,17 +4,8 @@ import { api } from '$lib/stores';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	//If logged in redirect the user
-	if (locals.token) {
-		const response = await (
-			await fetch(`${api}/user`, {
-				headers: {
-					Authorization: `Bearer ${locals.token}`
-				}
-			})
-		).json();
-		if (response.status === 200) {
-			throw redirect(302, '/user');
-		}
+	if (locals.user && locals.user.role === 'user') {
+		throw redirect(302, '/user/services');
 	}
 };
 

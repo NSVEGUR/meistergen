@@ -1,21 +1,20 @@
 import type { PageServerLoad } from './$types';
 import { api } from '$lib/stores';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	if (!locals.token) throw redirect(302, '/user/login');
+	if (!locals.user || locals.user.role !== 'user') throw redirect(303, '/user/logout');
 	const response = await (
 		await fetch(`${api}/user/services`, {
 			method: 'GET',
 			headers: {
-				Authorization: `Bearer ${locals.token}`
+				Authorization: `Bearer ${locals.user.token}`
 			}
 		})
 	).json();
 	if (response.status === 200) {
-		const { services, user } = response.data;
+		const { services } = response.data;
 		return {
-			user,
 			services: {
 				applied: services.applied,
 				approved: services.approved,
@@ -23,5 +22,5 @@ export const load: PageServerLoad = async ({ locals }) => {
 			}
 		};
 	}
-	throw redirect(302, '/user/logout');
+	throw error(response.status, response.message ?? 'Unknown error occurred in fetching services');
 };

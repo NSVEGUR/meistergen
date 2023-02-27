@@ -3,25 +3,23 @@ import type { PageServerLoad } from './$types';
 import { api } from '$lib/stores';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-	if (locals.token) {
-		const response = await (
-			await fetch(`${api}/user/services/${params.service}`, {
-				method: 'GET',
-				headers: {
-					Authorization: `Bearer ${locals.token}`
-				}
-			})
-		).json();
-		if (response.status === 200) {
-			const { service, user } = response.data;
-			return {
-				user,
-				service
-			};
-		}
-		throw error(response.status, response.message);
+	if (!locals.user || locals.user.role !== 'user') throw redirect(303, '/user/logout');
+	const response = await (
+		await fetch(`${api}/user/services/${params.service}`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${locals.user.token}`
+			}
+		})
+	).json();
+	if (response.status === 200) {
+		const { service, user } = response.data;
+		return {
+			user,
+			service
+		};
 	}
-	throw redirect(302, '/user/logout');
+	throw error(response.status, response.message);
 };
 
 export const actions = {
@@ -45,7 +43,7 @@ export const actions = {
 			await fetch(`${api}/user/services/available/${params.service}`, {
 				method: 'POST',
 				headers: {
-					Authorization: `Bearer ${locals.token}`
+					Authorization: `Bearer ${locals.user.token}`
 				},
 				body
 			})

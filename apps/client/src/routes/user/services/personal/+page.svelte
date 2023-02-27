@@ -43,6 +43,9 @@
 				padding: 10px;
 				border-bottom: 1px solid var(--color-bg-1);
 				cursor: pointer;
+				&:hover{
+					background: var(--color-bg-2);
+				}
 				a{
 					color: var(--secondary-text-color);
 					margin: 0;

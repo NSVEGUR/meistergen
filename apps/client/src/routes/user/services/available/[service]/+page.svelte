@@ -124,6 +124,9 @@
 					flex-direction: column;
 					align-items: center;
 					gap: 5px;
+					padding: 10px;
+					border-radius: 10px;
+					border: 2px dashed rgb(50, 120, 200);
 					.fas {
 						height: 30px;
 						width: 30px;
@@ -132,6 +135,10 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+					}
+					ul{
+						list-style: none;
+						padding: 0;
 					}
 				}
 				input {

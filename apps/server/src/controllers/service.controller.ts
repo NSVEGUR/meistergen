@@ -28,7 +28,6 @@ const get = catchAsync(async function (req: Request, res: Response, next: NextFu
     status: 200,
     message: 'Service found',
     data: {
-      email: req.user.email,
       service: {
         uid: foundService.uid,
         name: foundService.name,
@@ -44,17 +43,13 @@ const getAll = catchAsync(async function (req: Request, res: Response, next: Nex
   const services = await prisma.service.findMany({
     select: {
       uid: true,
-      name: true,
-      description: true,
-      type: true,
-      price: true
+      name: true
     }
   });
   res.status(200).json({
     status: 200,
     message: 'Services found successfully',
     data: {
-      email: req.user.email,
       count: services.length,
       services
     }

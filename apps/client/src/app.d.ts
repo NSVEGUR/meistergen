@@ -11,7 +11,6 @@ declare global {
 				role: string;
 				token: string;
 			};
-			token: string;
 		}
 	}
 }
