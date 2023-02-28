@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import { prisma } from '../../server';
 import prismaExclude from '../../utils/prismaExclude.util';
 import config from '../../config';
+import Crypto from '../../utils/crypto.util';
 
 const create = async function (
   userId: number,
@@ -11,6 +12,7 @@ const create = async function (
 ) {
   const userService = await prisma.serviceRequest.create({
     data: {
+      uid: Crypto.crypticRandomBytes(),
       userId,
       serviceId
     }

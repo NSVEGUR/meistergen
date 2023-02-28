@@ -16,6 +16,23 @@ const protect = catchAsync(async function (req: Request, res: Response, next: Ne
   next();
 });
 
+const serviceRequestProtect = catchAsync(async function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const { request } = req.params;
+  if (!request) return next(new AppError('No such serviceRequest exist', 404));
+  const serviceRequest = await prisma.serviceRequest.findUnique({
+    where: {
+      uid: request
+    }
+  });
+  if (!serviceRequest) return next(new AppError('No such serviceRequest exist', 404));
+  req.serviceRequest = serviceRequest;
+  next();
+});
+
 const get = catchAsync(async function (req: Request, res: Response, next: NextFunction) {
   const { service } = req.params;
   const foundService = await prisma.service.findUnique({
@@ -59,5 +76,6 @@ const getAll = catchAsync(async function (req: Request, res: Response, next: Nex
 export default {
   getAll,
   get,
-  protect
+  protect,
+  serviceRequestProtect
 };

@@ -24,10 +24,7 @@ const getServiceRequest = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
-  const { email } = req.body;
-  const user = await AuthService.findBasedOnEmail(email);
-  if (!user) return next(new AppError('No user found', 404));
-  const request = await serviceRequest.get(user.id, req.service.id);
+  const request = await serviceRequest.get(req.serviceRequest.id);
   res.status(200).json({
     status: 200,
     message: 'Fetched service request successfully',
@@ -42,10 +39,7 @@ const approveServiceRequest = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
-  const { email } = req.body;
-  const user = await AuthService.findBasedOnEmail(email);
-  if (!user) return next(new AppError('No user found', 404));
-  const request = await serviceRequest.conclude(user.id, req.service.id, req.user.id, true);
+  const request = await serviceRequest.conclude(req.serviceRequest.id, req.user.id, true);
   res.status(200).json({
     status: 200,
     message: 'Approved service request successfully',
@@ -60,10 +54,7 @@ const declineServiceRequest = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
-  const { email } = req.body;
-  const user = await AuthService.findBasedOnEmail(email);
-  if (!user) return next(new AppError('No user found', 404));
-  const request = await serviceRequest.conclude(user.id, req.service.id, req.user.id, false);
+  const request = await serviceRequest.conclude(req.serviceRequest.id, req.user.id, false);
   res.status(200).json({
     status: 200,
     message: 'Declined service request successfully',

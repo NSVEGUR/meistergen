@@ -14,7 +14,12 @@ const protect = catchAsync(async function (req: Request, res: Response, next: Ne
   const decoded: any = await Auth.verifyToken(token);
   if (!decoded._id || !decoded._role) return next(new AppError('Not authorized', 401));
   const user = await AuthService.findBasedOnUid(decoded._id);
-  if (!user || user.role !== decoded._role) return next(new AppError('User not found', 404));
+  if (
+    !user ||
+    user.role !== decoded._role ||
+    user.role.toLowerCase() !== req.originalUrl.split('/')[1]
+  )
+    return next(new AppError('User not found', 404));
   req.user = user;
   next();
 });

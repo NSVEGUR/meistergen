@@ -23,16 +23,20 @@ const getAll = async function () {
   return requests;
 };
 
-const get = async function (userId: number, serviceId: number) {
+const get = async function (id: number) {
   const request = await prisma.serviceRequest.findUnique({
     where: {
-      uid: {
-        userId,
-        serviceId
-      }
+      id
     },
     select: {
-      service: true,
+      service: {
+        select: {
+          name: true,
+          type: true,
+          price: true,
+          description: true
+        }
+      },
       user: {
         select: {
           email: true
@@ -43,25 +47,32 @@ const get = async function (userId: number, serviceId: number) {
   return request;
 };
 
-const conclude = async function (
-  userId: number,
-  serviceId: number,
-  employeeId: number,
-  approve: boolean
-) {
+const conclude = async function (id: number, employeeId: number, approve: boolean) {
   const request = await prisma.serviceRequest.update({
     where: {
-      uid: {
-        userId: userId,
-        serviceId: serviceId
-      }
+      id
     },
     data: {
       approved: approve,
       concludedBy: employeeId
+    },
+    select: {
+      service: {
+        select: {
+          name: true,
+          type: true,
+          price: true,
+          description: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
     }
   });
-  return prismaExclude(request, ['id']);
+  return request;
 };
 
 export default {

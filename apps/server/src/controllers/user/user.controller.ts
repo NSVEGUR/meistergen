@@ -1,10 +1,12 @@
 import catchAsync from '../../utils/catchAsync.util';
 import { NextFunction, Request, Response } from 'express';
 import ServiceRequest from '../../services/user/serviceRequest.service';
+import AppError from '../../utils/appError.util';
 
 const applyService = catchAsync(async function (req: Request, res: Response, next: NextFunction) {
   const { letter } = req.body;
   const files = req.files as Express.Multer.File[];
+  if (!files && !letter) return next(new AppError('Please let us know about yourself', 400));
   const fileNames = await ServiceRequest.create(req.user.id, req.service.id, files, letter);
   res.status(201).json({
     status: 201,
