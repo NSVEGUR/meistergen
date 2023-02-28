@@ -13,6 +13,17 @@
 	font-family: var(--font-body);
 	color: var(--primary-text-color);
 	box-sizing: border-box;
+
+	--color-text-base: #000000;
+	--color-text-muted: #5E89A4;
+	--color-text-inverted: #1192E2;
+	--color-button-accent: #1680D1;
+	--color-button-accent-hover: #5E89A4;
+	--color-button-accent-muted: #D8D8D8;
+	--color-background-base: white;
+	--color-background-muted: #D6D6D6;
+	--color-background-gradient-base: linear-gradient(225deg, #22e1ff 0%, #1d8fe1 48%, #015e94 100%);
+	--font-base: 'Open Sans', sans-serif;
 }
 
 body {

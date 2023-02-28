@@ -1,15 +1,26 @@
 import { NextFunction, Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync.util';
-import serviceRequest from '../../services/employee/serviceRequest.service';
-import AppError from '../../utils/appError.util';
-import AuthService from '../../services/auth.service';
+import { prisma } from '../../server';
 
-const getServiceRequests = catchAsync(async function (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const requests = await serviceRequest.getAll();
+const getAvailable = catchAsync(async function (req: Request, res: Response, next: NextFunction) {
+  const requests = await prisma.serviceRequest.findMany({
+    where: {
+      approved: false
+    },
+    select: {
+      uid: true,
+      service: {
+        select: {
+          name: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
   res.status(200).json({
     status: 200,
     message: 'Fetched service requests successfully',
@@ -19,12 +30,117 @@ const getServiceRequests = catchAsync(async function (
   });
 });
 
-const getServiceRequest = catchAsync(async function (
+const getPersonal = catchAsync(async function (req: Request, res: Response, next: NextFunction) {
+  const requests = await prisma.serviceRequest.findMany({
+    where: {
+      approved: true,
+      approvedBy: req.user.id
+    },
+    select: {
+      uid: true,
+      service: {
+        select: {
+          name: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
+  res.status(200).json({
+    status: 200,
+    message: 'Fetched service requests successfully',
+    data: {
+      requests
+    }
+  });
+});
+
+const getAll = catchAsync(async function (req: Request, res: Response, next: NextFunction) {
+  const available = await prisma.serviceRequest.findMany({
+    where: {
+      approved: false
+    },
+    select: {
+      uid: true,
+      service: {
+        select: {
+          name: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
+  const personal = await prisma.serviceRequest.findMany({
+    where: {
+      approved: true,
+      approvedBy: req.user.id
+    },
+    select: {
+      uid: true,
+      service: {
+        select: {
+          name: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
+  res.status(200).json({
+    status: 200,
+    message: 'Fetched service requests successfully',
+    data: {
+      requests: {
+        available,
+        personal
+      }
+    }
+  });
+});
+
+const getRequest = catchAsync(async function (
   req: Request<{}, {}, { email: string }>,
   res: Response,
   next: NextFunction
 ) {
-  const request = await serviceRequest.get(req.serviceRequest.id);
+  const request = await prisma.serviceRequest.findUnique({
+    where: {
+      id: req.serviceRequest.id
+    },
+    select: {
+      uid: true,
+      files: {
+        select: {
+          name: true,
+          uid: true
+        }
+      },
+      service: {
+        select: {
+          name: true,
+          type: true,
+          price: true,
+          description: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
   res.status(200).json({
     status: 200,
     message: 'Fetched service request successfully',
@@ -34,12 +150,35 @@ const getServiceRequest = catchAsync(async function (
   });
 });
 
-const approveServiceRequest = catchAsync(async function (
+const approve = catchAsync(async function (
   req: Request<{}, {}, { email: string }>,
   res: Response,
   next: NextFunction
 ) {
-  const request = await serviceRequest.conclude(req.serviceRequest.id, req.user.id, true);
+  const request = await prisma.serviceRequest.update({
+    where: {
+      id: req.serviceRequest.id
+    },
+    data: {
+      approved: true,
+      approvedBy: req.user.id
+    },
+    select: {
+      service: {
+        select: {
+          name: true,
+          type: true,
+          price: true,
+          description: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
   res.status(200).json({
     status: 200,
     message: 'Approved service request successfully',
@@ -49,12 +188,35 @@ const approveServiceRequest = catchAsync(async function (
   });
 });
 
-const declineServiceRequest = catchAsync(async function (
+const decline = catchAsync(async function (
   req: Request<{}, {}, { email: string }>,
   res: Response,
   next: NextFunction
 ) {
-  const request = await serviceRequest.conclude(req.serviceRequest.id, req.user.id, false);
+  const request = await prisma.serviceRequest.update({
+    where: {
+      id: req.serviceRequest.id
+    },
+    data: {
+      approved: false,
+      approvedBy: req.user.id
+    },
+    select: {
+      service: {
+        select: {
+          name: true,
+          type: true,
+          price: true,
+          description: true
+        }
+      },
+      user: {
+        select: {
+          email: true
+        }
+      }
+    }
+  });
   res.status(200).json({
     status: 200,
     message: 'Declined service request successfully',
@@ -65,8 +227,10 @@ const declineServiceRequest = catchAsync(async function (
 });
 
 export default {
-  getServiceRequests,
-  getServiceRequest,
-  approveServiceRequest,
-  declineServiceRequest
+  getAvailable,
+  getPersonal,
+  getAll,
+  getRequest,
+  approve,
+  decline
 };

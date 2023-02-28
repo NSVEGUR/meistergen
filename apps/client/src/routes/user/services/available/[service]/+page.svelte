@@ -42,13 +42,16 @@
 				return async ({ result }) => {
 					if (result.type == 'success') {
 						loading.setLoading(true, 'Applied ...✅');
-						setTimeout(() => {
+						await (async()=>{
+							setTimeout(async ()=>{
 							loading.setLoading(false);
-						}, 1000);
+							await applyAction(result);
+						}, 1500);
+						})();
 					}else{
 						loading.setLoading(false);
+						await applyAction(result);
 					}
-					await applyAction(result);
 				};
 			}}
 		>
@@ -73,7 +76,7 @@
 				</div>
 			</section>
 			{#if form?.missing}
-				<small>Please do at least one of the actions🥲</small>
+				<small>Please upload some file or let us know about you something by your own words🥲</small>
 			{/if}
 			<div class="apply">
 				<button type="submit">Apply</button>

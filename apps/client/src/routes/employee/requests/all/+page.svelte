@@ -4,20 +4,31 @@
 
 <div class="services">
 	{#if $page.data?.requests}
-		{#if $page.data.requests.length > 0}
-			<div>My Services</div>
+		{#if $page.data.requests.personal.length > 0}
+			<div>Personal</div>
 			<ul>
-				{#each $page.data.requests as request}
+				{#each $page.data.requests.personal as request}
 					<li>
-						<a href={`/user/services/${request.uid}`}>
+						<a href={`/employee/requests/${request.uid}`}>
 							<i class="fas fa-folder"></i>
-							{request.service.name}
+							{request.service.name} <span> by {request.user.email}</span>
 						</a>
 					</li>
 				{/each}
 			</ul>
-		{:else}
-			<h5>Please apply for some services to use 🤩</h5>
+		{/if}
+		{#if $page.data.requests.available.length > 0}
+			<div>Available</div>
+			<ul>
+				{#each $page.data.requests.available as request}
+					<li>
+						<a href={`/employee/requests/available/${request.uid}`}>
+							<i class="fas fa-folder"></i>
+							{request.service.name} <span> by {request.user.email}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
 		{/if}
 	{/if}
 </div>
@@ -30,11 +41,6 @@
 			font-size: 1.4rem;
 			padding: 5px 0;
 			border-bottom: 2px solid rgba(29, 28, 28, 0.3);
-		}
-		h5{
-			font-weight: 400;
-			color: var(--secondary-text-color);
-			text-align: center;
 		}
 		ul{
 			padding: 0px;
@@ -52,11 +58,17 @@
 					display: block;
 					height:100%;
 					width: 100%;
+					position: relative;
 					&:hover{
 						text-decoration:none;
 					}
 					.fas{
 						margin-right: 5px;
+					}
+					span{
+						position: absolute;
+						top :0;
+						right: 10px;
 					}
 				}
 			}

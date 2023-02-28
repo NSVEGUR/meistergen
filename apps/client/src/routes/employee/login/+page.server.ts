@@ -31,8 +31,8 @@ export const actions = {
 			})
 		).json();
 		if (response.status === 200) {
-			const { token } = response.data;
-			cookies.set('employee-token', token, {
+			const { user } = response.data;
+			cookies.set('employee-token', user.token, {
 				path: '/'
 			});
 			throw redirect(302, '/employee');

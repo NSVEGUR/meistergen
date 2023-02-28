@@ -55,8 +55,8 @@
 				<h4>Services-X</h4>
 			</li>
 			<li>Personal</li>
-			<li>All services</li>
-			<li>Available services</li>
+			<li>All Requests</li>
+			<li>Approved services</li>
 		</ul>
 	</nav>
 	<div class:toggle-menu={toggleMenu} class="menu">
@@ -70,25 +70,25 @@
 		<ul>
 			<a href="/">Settings</a>
 			<a href="/">Manage Account</a>
-			<a href="/user/logout">Sign out</a>
+			<a href="/employee/logout">Sign out</a>
 		</ul>
 	</div>
 	<section>
 		<nav class="nav">
 			<ul>
-				<li class:active={route == '/user/services'}><a
-					href="/user/services"
+				<li class:active={route == '/employee/requests'}><a
+					href='/employee/requests'
 					>Personal</a
 				></li>
-				<li class:active={route.includes('/user/services/all')}>
+				<li class:active={route.includes('/employee/requests/all')}>
 					<a
-					href="/user/services/all"
-					>All Services</a
+					href='/employee/requests/all'
+					>All Requests</a
 				>
 				</li>
-				<li class:active={route.includes('/user/services/available')}><a
-					href="/user/services/available"
-					>Available services</a
+				<li class:active={route.includes('/employee/requests/available')}><a
+					href='/employee/requests/available'
+					>Available requests</a
 				></li>
 			</ul>
 		</nav>

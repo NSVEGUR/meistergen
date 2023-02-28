@@ -38,9 +38,8 @@ model ServiceRequest{
   serviceId Int
   service Service @relation(fields: [serviceId], references: [id])
   approved Boolean @default(false)
-  concludedBy Int?
+  approvedBy Int?
   files File[]
-  @@unique([userId, serviceId], name: "user_service")
 }
 model File{
   id Int @id @default(autoincrement())

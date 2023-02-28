@@ -1,10 +1,10 @@
 import type { PageServerLoad } from './$types';
 import { api } from '$lib/stores';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const response = await (
-		await fetch(`${api}/user/services/`, {
+		await fetch(`${api}/employee/requests/available`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${locals.user.token}`
@@ -17,5 +17,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 			requests
 		};
 	}
-	throw error(response.status, response.message ?? 'Unknown error occurred in fetching services');
+	throw error(
+		response.status,
+		response.message ?? 'Unknown error occurred in fetching available requests'
+	);
 };

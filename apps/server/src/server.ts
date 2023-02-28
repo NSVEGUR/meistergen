@@ -25,9 +25,9 @@ process.on('unhandledRejection', (err) => {
 });
 
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully..✌🏻');
+  console.log('SIGTERM received. Shutting down gracefully..👀');
   server.close(() => {
-    console.log('Closed remaining connections 🔒');
+    console.log('Closed remaining connections ✅');
     process.exit(0);
   });
 });

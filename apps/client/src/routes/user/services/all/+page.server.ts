@@ -3,9 +3,8 @@ import { api } from '$lib/stores';
 import { error, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	if (!locals.user || locals.user.role !== 'user') throw redirect(303, '/user/logout');
 	const response = await (
-		await fetch(`${api}/user/services/applied`, {
+		await fetch(`${api}/user/services/all`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${locals.user.token}`
@@ -13,14 +12,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 		})
 	).json();
 	if (response.status === 200) {
-		const { services, user } = response.data;
+		const { requests } = response.data;
 		return {
-			user,
-			services
+			personal: requests.approved,
+			available: requests.available
 		};
 	}
-	throw error(
-		response.status,
-		response.message ?? 'Unknown error occurred in fetching applied services'
-	);
+	throw error(response.status, response.message ?? 'Unknown error occurred in fetching services');
 };

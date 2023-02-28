@@ -32,8 +32,8 @@ export const actions = {
 			})
 		).json();
 		if (response.status === 200) {
-			const { token } = response.data;
-			cookies.set('admin-token', token, {
+			const { user } = response.data;
+			cookies.set('admin-token', user.token, {
 				path: '/'
 			});
 			throw redirect(302, '/admin');

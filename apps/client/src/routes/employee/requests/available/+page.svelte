@@ -4,20 +4,21 @@
 
 <div class="services">
 	{#if $page.data?.requests}
-		{#if $page.data.requests.length > 0}
-			<div>My Services</div>
-			<ul>
-				{#each $page.data.requests as request}
-					<li>
-						<a href={`/user/services/${request.uid}`}>
-							<i class="fas fa-folder"></i>
-							{request.service.name}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		{:else}
-			<h5>Please apply for some services to use 🤩</h5>
+		<div>
+			Available
+		</div>
+		<ul>
+			{#each $page.data.requests as request}
+				<li>
+					<a href={`/employee/requests/available/${request.uid}`}>
+						<i class="fas fa-folder"></i>
+						{request.service.name} <span>by {request.user.email}</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+		{#if $page.data.requests.length == 0}
+			<p>No services were applied</p>
 		{/if}
 	{/if}
 </div>
@@ -31,10 +32,9 @@
 			padding: 5px 0;
 			border-bottom: 2px solid rgba(29, 28, 28, 0.3);
 		}
-		h5{
-			font-weight: 400;
-			color: var(--secondary-text-color);
+		p{
 			text-align: center;
+			color: var(--secondary-text-color);
 		}
 		ul{
 			padding: 0px;
@@ -42,7 +42,6 @@
 			li{
 				padding: 10px;
 				border-bottom: 1px solid var(--color-bg-1);
-				cursor: pointer;
 				&:hover{
 					background: var(--color-bg-2);
 				}
@@ -52,11 +51,17 @@
 					display: block;
 					height:100%;
 					width: 100%;
+					position: relative;
 					&:hover{
 						text-decoration:none;
 					}
 					.fas{
 						margin-right: 5px;
+					}
+					span{
+						position: absolute;
+						top :0;
+						right: 10px;
 					}
 				}
 			}

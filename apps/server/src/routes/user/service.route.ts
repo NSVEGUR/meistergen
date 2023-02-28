@@ -5,16 +5,16 @@ import User from '../../controllers/user/user.controller';
 
 const router = express.Router();
 
-router.get('/', User.getAll);
+router.route('/').get(User.getPersonal);
 router.route('/available').get(User.getAvailable);
-router.route('/applied').get(User.getApplied);
-router.route('/approved').get(User.getApproved);
+router.get('/all', User.getAll);
 router.post(
   '/available/:service',
   Service.protect,
   FileService.upload.array('files'),
   User.applyService
 );
-router.get('/:service', Service.get);
+router.get('/available/:service', Service.get);
+router.get('/:request', Service.serviceRequestProtect, User.getService);
 
 export default router;

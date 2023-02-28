@@ -3,22 +3,32 @@
 </script>
 
 <div class="services">
-	{#if $page.data.services}
-		<div>
-			Personal
-		</div>
-		<ul>
-			{#each $page.data.services as service}
-				<li>
-					<a href={`/user/services/personal/${service.uid}`}>
-						<i class="fas fa-folder"></i>
-						{service.name}
-					</a>
-				</li>
-			{/each}
-		</ul>
-		{#if $page.data.services.length == 0}
-			<p>Zero personal services</p>
+	{#if $page.data?.personal}
+		{#if $page.data.personal.length > 0}
+			<div>My Services</div>
+			<ul>
+				{#each $page.data.personal as request}
+					<li>
+						<a href={`/user/services/${request.uid}`}>
+							<i class="fas fa-folder"></i>
+							{request.service.name}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
+		{#if $page.data.available.length > 0}
+			<div>Available</div>
+			<ul>
+				{#each $page.data.available as service}
+					<li>
+						<a href={`/user/services/available/${service.uid}`}>
+							<i class="fas fa-folder"></i>
+							{service.name}
+						</a>
+					</li>
+				{/each}
+			</ul>
 		{/if}
 	{/if}
 </div>
@@ -31,10 +41,6 @@
 			font-size: 1.4rem;
 			padding: 5px 0;
 			border-bottom: 2px solid rgba(29, 28, 28, 0.3);
-		}
-		p{
-			text-align: center;
-			color: var(--secondary-text-color);
 		}
 		ul{
 			padding: 0px;
