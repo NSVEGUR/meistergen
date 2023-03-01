@@ -62,7 +62,7 @@
 
 <style lang="scss">
 	main {
-		border: 1px solid var(--color-bg-1);
+		border: 1px solid var(--color-border-base);
 		border-radius: 10px;
 		header {
 			display: flex;
@@ -70,7 +70,7 @@
 			justify-content: center;
 			gap: 5px;
 			padding: 5px 0;
-			box-shadow: 0px 1px 2px var(--color-bg-2);
+			box-shadow: 0px 3px 3px var(--color-bg-muted);
 			button {
 				border: none;
 				outline: none;
@@ -79,7 +79,8 @@
 				width: 30px;
 				border-radius: 2px;
 				&:hover {
-					background: var(--color-bg-1);
+					background: var(--color-button-accent-transparent);
+					color: var(--color-text-inverted);
 				}
 			}
 		}

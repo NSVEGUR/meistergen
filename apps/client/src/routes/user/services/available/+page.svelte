@@ -12,14 +12,14 @@
 				{#each $page.data.services as service}
 					<li>
 						<a href={`/user/services/available/${service.uid}`}>
-							<i class="fas fa-folder"></i>
+							<i class="fas fa-link"></i>
 							{service.name}
 						</a>
 					</li>
 				{/each}
 			</ul>
 		{:else}
-			<h5>No services are available 🤩</h5>
+			<h5>No services are available</h5>
 		{/if}
 	{/if}
 </div>
@@ -35,17 +35,17 @@
 		}
 		h5{
 			font-weight: 400;
-			color: var(--secondary-text-color);
 			text-align: center;
 		}
 		ul{
 			padding: 0px;
 			list-style: none;
 			li{
-				padding: 10px;
-				border-bottom: 1px solid var(--color-bg-1);
+				padding: 15px;
+				border-bottom: 1px solid var(--color-border-base);
+				font-weight: 200;
 				&:hover{
-					background: var(--color-bg-2);
+					background: var(--color-bg-muted);
 				}
 				a{
 					color: var(--secondary-text-color);

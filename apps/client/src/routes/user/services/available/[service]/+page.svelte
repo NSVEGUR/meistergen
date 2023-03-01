@@ -68,7 +68,7 @@
 						{#if fileNames}
 							<ul>
 								{#each fileNames as fileName}
-									<li>{fileName}</li>
+									<li><i class="fas fa-file fa-sm"></i>{fileName}</li>
 								{/each}
 							</ul>
 						{/if}
@@ -114,8 +114,8 @@
 			}
 			.file-container {
 				width: 500px;
-				height: 350px;
-				border: 1px solid var(--color-bg-1);
+				height: 345px;
+				border: 1px solid var(--color-border-base);
 				border-radius: 10px;
 				display: flex;
 				flex-direction: column;
@@ -129,12 +129,13 @@
 					gap: 5px;
 					padding: 10px;
 					border-radius: 10px;
-					border: 2px dashed rgb(50, 120, 200);
-					.fas {
+					border: 2px dashed var(--color-button-accent-base);
+					.fa-upload {
 						height: 30px;
 						width: 30px;
 						border-radius: 50%;
-						background: var(--gradient-theme-1);
+						background: var(--color-button-accent-transparent);
+						color: var(--color-text-inverted);
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -142,6 +143,11 @@
 					ul{
 						list-style: none;
 						padding: 0;
+						li{
+							.fas{
+								margin-right: 5px;
+							}
+						}
 					}
 				}
 				input {
@@ -165,7 +171,7 @@
 			button[type='submit'] {
 				outline: none;
 				border: none;
-				background: var(--gradient-theme-1);
+				background: var(--color-button-accent-base);
 				min-width: 150px;
 				min-height: 30px;
 				border-radius: 20px;

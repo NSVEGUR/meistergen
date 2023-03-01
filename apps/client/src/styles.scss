@@ -1,29 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
 
 :root {
-	--font-body: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-lato: 'Lato', sans-serif;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--gradient-theme-1: linear-gradient(225deg, #22e1ff 0%, #1d8fe1 48%, #015e94 100%);
-	--primary-text-color: #202020;
-	--secondary-text-color: #222222d9;
-	font-family: var(--font-body);
-	color: var(--primary-text-color);
-	box-sizing: border-box;
-
 	--color-text-base: #000000;
-	--color-text-muted: #5E89A4;
-	--color-text-inverted: #1192E2;
-	--color-button-accent: #1680D1;
-	--color-button-accent-hover: #5E89A4;
-	--color-button-accent-muted: #D8D8D8;
-	--color-background-base: white;
-	--color-background-muted: #D6D6D6;
-	--color-background-gradient-base: linear-gradient(225deg, #22e1ff 0%, #1d8fe1 48%, #015e94 100%);
+	--color-text-muted: #5e89a4;
+	--color-text-inverted: #316ac4;
+	--color-button-accent-base: #1192e2;
+	--color-button-accent-transparent: #e7f0fe;
+	--color-button-accent-hover: #169cef;
+	--color-button-accent-muted: #d8d8d8;
+	--color-bg-base: white;
+	--color-bg-muted: #f0f3f4;
+	--color-bg-gradient-base: linear-gradient(225deg, #22e1ff 0%, #1d8fe1 48%, #015e94 100%);
+	--color-border-base: #b7b5b5;
 	--font-base: 'Open Sans', sans-serif;
+}
+
+* {
+	font-family: var(--font-base);
+	box-sizing: border-box;
 }
 
 body {

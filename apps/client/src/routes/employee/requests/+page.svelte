@@ -10,7 +10,7 @@
 				{#each $page.data.requests as request}
 					<li>
 						<a href={`/employee/requests/${request.uid}`}>
-							<i class="fas fa-folder"></i>
+							<i class="fas fa-link"></i>
 							{request.service.name} <span>by {request.user.email}</span>
 						</a>
 					</li>
@@ -40,11 +40,11 @@
 			padding: 0px;
 			list-style: none;
 			li{
-				padding: 10px;
-				border-bottom: 1px solid var(--color-bg-1);
-				cursor: pointer;
+				padding: 15px;
+				border-bottom: 1px solid var(--color-border-base);
+				font-weight: 200;
 				&:hover{
-					background: var(--color-bg-2);
+					background: var(--color-bg-muted);
 				}
 				a{
 					color: var(--secondary-text-color);

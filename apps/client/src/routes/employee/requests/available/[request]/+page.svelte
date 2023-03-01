@@ -19,11 +19,11 @@
 				<h2>User Details </h2>
 				<li>Email: {$page.data.user.email}</li>
 				<h2>Files</h2>
-				<div>
+				<ul>
 					{#each $page.data.files as file}
-					<a href={`/employee/download/${file.uid}`}>{file.name}</a>
+					<li><a href={`/employee/download/${file.uid}`}><i class="fas fa-file"></i>{file.name}</a></li>
 					{/each}
-				</div>
+				</ul>
 			</ul>
 		</div>
 		<div class="conclusion">
@@ -58,6 +58,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			font-weight: 200;
 			img {
 				height: 50px;
 			}
@@ -67,9 +68,17 @@
 			}
 			ul {
 				list-style: none;
-				div{
-					display: flex;
-					flex-direction: column;
+				padding:0px;
+				ul{
+					padding:0px;
+					li{
+						a{
+							color: var(--color-text-base);
+							.fas{
+								margin-right: 5px;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -84,7 +93,7 @@
 				border-radius: 10px;
 			}
 			.approve{
-				background: rgb(43, 141, 228);
+				background: var(--color-button-accent-base);
 			}
 			.decline{
 				background: rgb(213, 65, 65);

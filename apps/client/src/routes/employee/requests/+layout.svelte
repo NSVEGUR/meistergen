@@ -55,8 +55,8 @@
 				<h4>Services-X</h4>
 			</li>
 			<li>Personal</li>
-			<li>All Requests</li>
-			<li>Approved services</li>
+			<li>All services</li>
+			<li>Available services</li>
 		</ul>
 	</nav>
 	<div class:toggle-menu={toggleMenu} class="menu">
@@ -77,17 +77,17 @@
 		<nav class="nav">
 			<ul>
 				<li class:active={route == '/employee/requests'}><a
-					href='/employee/requests'
+					href="/employee/requests"
 					>Personal</a
 				></li>
 				<li class:active={route.includes('/employee/requests/all')}>
 					<a
-					href='/employee/requests/all'
+					href="/employee/requests/all"
 					>All Requests</a
 				>
 				</li>
 				<li class:active={route.includes('/employee/requests/available')}><a
-					href='/employee/requests/available'
+					href="/employee/requests/available"
 					>Available requests</a
 				></li>
 			</ul>
@@ -104,7 +104,7 @@
 		.header {
 			width: 100vw;
 			height: 60px;
-			box-shadow: 0px 3px 5px var(--color-bg-1);
+			box-shadow: 0px 3px 5px var(--color-bg-muted);
 			position: relative;
 			.logo {
 				position: absolute;
@@ -121,7 +121,7 @@
 				left: 50%;
 				top: 10px;
 				transform: translateX(-50%);
-				background: var(--color-bg-2);
+				background: var(--color-bg-muted);
 				border-radius: 5px;
 				padding: 5px;
 				display: flex;
@@ -145,8 +145,7 @@
 				height: 40px;
 				width: 40px;
 				border-radius: 50%;
-				background: var(--color-bg-2);
-				box-shadow: 0px 1px 3px black;
+				box-shadow: 0px 1px 3px var(--color-border-base);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -159,7 +158,7 @@
 			display: none;
 			width: 100vw;
 			height: 60px;
-			box-shadow: 0px 3px 5px var(--color-bg-1);
+			box-shadow: 0px 1px 3px var(--color-bg-muted);
 			align-items: center;
 			justify-content: center;
 			z-index: 2;
@@ -187,8 +186,7 @@
 					height: 35px;
 					width: 35px;
 					border-radius: 50%;
-					background: var(--color-bg-2);
-					box-shadow: 0px 1px 3px black;
+					box-shadow: 0px 1px 3px var(--color-border-base);
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -203,7 +201,7 @@
 			transition: all 0.5s ease;
 			position: fixed;
 			height: 100%;
-			box-shadow: 3px 0px 5px var(--color-bg-1);
+			box-shadow: 0px 1px 3px var(--color-bg-muted);
 			transform: translateX(-260px);
 			background: white;
 			ul {
@@ -224,7 +222,7 @@
 				.logo {
 					display: flex;
 					align-items: center;
-					border-bottom: 1px solid var(--color-bg-1);
+					border-bottom: 1px solid var(--color-border-base);
 					img {
 						height: 40px;
 					}
@@ -240,8 +238,10 @@
 			flex-direction: column;
 			align-items: center;
 			width: fit-content;
-			border: 1px solid var(--color-bg-1);
+			border: 1px solid var(--color-border-base);
+			border-radius: 10px;
 			gap: 5px;
+			z-index: 2;
 			.profile {
 				margin: 10px 0 10px;
 				height: 25px;
@@ -300,8 +300,12 @@
 					padding-right: 10px;
 					li{
 						padding: 10px 5px;
+						margin: 5px 0;
 						font-size: 1.2rem;
-						border-radius: 0px 15px 15px 0px;
+						border-radius: 0px 20px 20px 0px;
+						&:hover{
+								background: var(--color-bg-muted);
+						}
 						a{
 							margin: 0;
 							width: 100%;
@@ -314,9 +318,11 @@
 						}
 					}
 					.active{
-						background: var(--gradient-theme-1);
-						a{
-							color:white;
+						background: var(--color-button-accent-transparent);
+						color: var(--color-text-inverted);
+						font-weight: 700;
+						&:hover{
+							background: var(--color-button-accent-transparent);
 						}
 					}
 				}

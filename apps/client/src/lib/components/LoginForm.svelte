@@ -85,19 +85,12 @@
 <style lang="scss">
 	main {
 		padding: 20px;
-		background-attachment: fixed;
-		background-color: var(--color-bg-1);
-		background-image: linear-gradient(
-			180deg,
-			var(--color-bg-2) 0%,
-			var(--color-bg-1) 15%,
-			var(--color-bg-2) 50%
-		);
+		background-color: var(--color-bg-muted);
 		section {
-			height: calc(100vh - 50px);
-			width: calc(100vw - 50px);
-			background: white;
-			border: 1px solid var(--color-bg-1);
+			height: calc(100vh - 40px);
+			width: calc(100vw - 40px);
+			background: var(--color-bg-base);
+			border: 1px solid var(--color-border-base);
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
@@ -105,7 +98,7 @@
 			.banner-container {
 				width: 50%;
 				height: 100%;
-				background-image: var(--gradient-theme-1);
+				background-image: var(--color-bg-gradient-base);
 				border-radius: 10px 0 0 10px;
 				position: relative;
 				.banner {
@@ -117,7 +110,7 @@
 					padding: 10px;
 					transform: translate(-50%, -50%);
 					padding: 10px;
-					background: rgba(255, 255, 255, 0.3);
+					background: rgba(255, 255, 255, 0.2);
 					backdrop-filter: blur(30px);
 					border-radius: 10px;
 					h1 {
@@ -152,6 +145,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: flex-end;
+					gap: 10px;
 					img {
 						height: 50px;
 					}
@@ -160,7 +154,7 @@
 					width: 50px;
 					height: 50px;
 					background: white;
-					box-shadow: 3px 3px 5px var(--color-bg-1);
+					box-shadow: 3px 3px 5px var(--color-button-accent-muted);
 					border-radius: 50%;
 					img {
 						width: 50px;
@@ -198,14 +192,14 @@
 							border-radius: 5px;
 							width: 350px;
 							height: 35px;
-							border: solid 1px var(--color-bg-1);
+							border: solid 1px var(--color-border-base);
 							padding-left: 5px;
 						}
 						.input {
 							border-radius: 5px;
 							width: 350px;
 							height: 35px;
-							border: solid 1px var(--color-bg-1);
+							border: solid 1px var(--color-border-base);
 							display: flex;
 							align-items: center;
 							justify-content: center;
@@ -234,14 +228,18 @@
 					}
 					button[type='submit'] {
 						border-radius: 5px;
+						font-weight: 900;
 						width: 350px;
 						height: 35px;
 						border: none;
-						background-image: var(--gradient-theme-1);
+						background: var(--color-button-accent-base);
+						&:hover{
+							background: var(--color-button-accent-hover);
+						}
 					}
 					h3 {
 						text-align: center;
-						font-weight: 100;
+						font-weight: 500;
 						margin-top: 0px;
 						a {
 							color: black;

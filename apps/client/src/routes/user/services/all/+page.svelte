@@ -10,7 +10,7 @@
 				{#each $page.data.personal as request}
 					<li>
 						<a href={`/user/services/${request.uid}`}>
-							<i class="fas fa-folder"></i>
+								<i class="fas fa-link"></i>
 							{request.service.name}
 						</a>
 					</li>
@@ -23,7 +23,7 @@
 				{#each $page.data.available as service}
 					<li>
 						<a href={`/user/services/available/${service.uid}`}>
-							<i class="fas fa-folder"></i>
+							<i class="fas fa-link"></i>
 							{service.name}
 						</a>
 					</li>
@@ -46,11 +46,12 @@
 			padding: 0px;
 			list-style: none;
 			li{
-				padding: 10px;
-				border-bottom: 1px solid var(--color-bg-1);
+				padding: 15px;
+				border-bottom: 1px solid var(--color-border-base);
 				cursor: pointer;
+				font-weight: 200;
 				&:hover{
-					background: var(--color-bg-2);
+					background: var(--color-bg-muted);
 				}
 				a{
 					color: var(--secondary-text-color);

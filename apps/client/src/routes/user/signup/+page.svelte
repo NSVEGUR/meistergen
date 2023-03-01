@@ -106,19 +106,12 @@
 	main {
 		padding: 20px;
 		background-attachment: fixed;
-		background-color: var(--color-bg-1);
-		background-size: 100vw 100vh;
-		background-image: linear-gradient(
-			180deg,
-			var(--color-bg-2) 0%,
-			var(--color-bg-1) 15%,
-			var(--color-bg-2) 50%
-		);
+		background-color: var(--color-bg-muted);
 		section {
-			height: calc(100vh - 50px);
-			width: calc(100vw - 50px);
-			background: white;
-			border: 1px solid var(--color-bg-1);
+			height: calc(100vh - 40px);
+			width: calc(100vw - 40px);
+			background: var(--color-bg-base);
+			border: 1px solid var(--color-border-base);
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
@@ -126,7 +119,7 @@
 			.banner-container {
 				width: 50%;
 				height: 100%;
-				background-image: var(--gradient-theme-1);
+				background-image: var(--color-bg-gradient-base);
 				border-radius: 10px 0 0 10px;
 				position: relative;
 				.banner {
@@ -138,7 +131,7 @@
 					padding: 10px;
 					transform: translate(-50%, -50%);
 					padding: 10px;
-					background: rgba(255, 255, 255, 0.3);
+					background: rgba(255, 255, 255, 0.2);
 					backdrop-filter: blur(30px);
 					border-radius: 10px;
 					h1 {
@@ -210,14 +203,14 @@
 							border-radius: 5px;
 							width: 350px;
 							height: 35px;
-							border: solid 1px var(--color-bg-1);
+							border: solid 1px var(--color-border-base);
 							padding-left: 5px;
 						}
 						.input {
 							border-radius: 5px;
 							width: 350px;
 							height: 35px;
-							border: solid 1px var(--color-bg-1);
+							border: solid 1px var(--color-border-base);
 							display: flex;
 							align-items: center;
 							justify-content: center;
@@ -249,11 +242,14 @@
 						width: 350px;
 						height: 35px;
 						border: none;
-						background-image: var(--gradient-theme-1);
+						background: var(--color-button-accent-base);
+						&:hover{
+							background: var(--color-button-accent-hover);
+						}
 					}
 					h3 {
 						text-align: center;
-						font-weight: 100;
+						font-weight: 500;
 						margin-top: 0px;
 						a {
 							color: black;
