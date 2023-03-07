@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import ServiceLottie from '$lib/lottie/service_lottie.json';
+
+	let LottiePlayer: any;
+	onMount(async () => {
+		const module = await import('@lottiefiles/svelte-lottie-player');
+		LottiePlayer = module.LottiePlayer;
+	});
 </script>
 
-<div class="services">
+<div>
 	{#if $page.data?.requests}
 		{#if $page.data.requests.length > 0}
 			<div>My Services</div>
@@ -10,56 +18,29 @@
 				{#each $page.data.requests as request}
 					<li>
 						<a href={`/user/services/${request.uid}`}>
-							<i class="fas fa-link"></i>
+							<i class="fas fa-link" />
 							{request.service.name}
 						</a>
 					</li>
 				{/each}
 			</ul>
 		{:else}
-			<h5>Please apply for some services to use 🤩</h5>
+			<div class="flex flex-col items-center">
+				{#if LottiePlayer}
+					<LottiePlayer
+						src={ServiceLottie}
+						autoplay={true}
+						loop={true}
+						controls={false}
+						renderer="svg"
+						background="transparent"
+						height={200}
+						width={200}
+						controlsLayout={[]}
+					/>
+				{/if}
+				<h5>Please apply for some services to use 🤩</h5>
+			</div>
 		{/if}
 	{/if}
 </div>
-
-<style lang="scss">
-	.services {
-		width: 100%;
-		padding-top: 10px;
-		div{
-			font-size: 1.4rem;
-			padding: 5px 0;
-			border-bottom: 2px solid rgba(29, 28, 28, 0.3);
-		}
-		h5{
-			font-weight: 400;
-			color: var(--secondary-text-color);
-			text-align: center;
-		}
-		ul{
-			padding: 0px;
-			list-style: none;
-			li{
-				padding: 15px;
-				border-bottom: 1px solid var(--color-border-base);
-				font-weight: 200;
-				&:hover{
-					background: var(--color-bg-muted);
-				}
-				a{
-					color: var(--secondary-text-color);
-					margin: 0;
-					display: block;
-					height:100%;
-					width: 100%;
-					&:hover{
-						text-decoration:none;
-					}
-					.fas{
-						margin-right: 5px;
-					}
-				}
-			}
-		}
-	}
-</style>

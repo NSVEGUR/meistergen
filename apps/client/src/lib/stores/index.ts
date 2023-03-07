@@ -1,7 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const api = 'http://localhost:3000';
-
 const load = function () {
 	const { subscribe, update, set } = writable({
 		status: 'IDLE', //IDLE, LOADING, NAVIGATING

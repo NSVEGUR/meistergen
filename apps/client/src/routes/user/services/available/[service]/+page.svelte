@@ -42,13 +42,13 @@
 				return async ({ result }) => {
 					if (result.type == 'success') {
 						loading.setLoading(true, 'Applied ...✅');
-						await (async()=>{
-							setTimeout(async ()=>{
-							loading.setLoading(false);
-							await applyAction(result);
-						}, 1500);
+						await (async () => {
+							setTimeout(async () => {
+								loading.setLoading(false);
+								await applyAction(result);
+							}, 1500);
 						})();
-					}else{
+					} else {
 						loading.setLoading(false);
 						await applyAction(result);
 					}
@@ -68,7 +68,7 @@
 						{#if fileNames}
 							<ul>
 								{#each fileNames as fileName}
-									<li><i class="fas fa-file fa-sm"></i>{fileName}</li>
+									<li><i class="fas fa-file fa-sm" />{fileName}</li>
 								{/each}
 							</ul>
 						{/if}
@@ -76,7 +76,8 @@
 				</div>
 			</section>
 			{#if form?.missing}
-				<small>Please upload some file or let us know about you something by your own words🥲</small>
+				<small>Please upload some file or let us know about you something by your own words🥲</small
+				>
 			{/if}
 			<div class="apply">
 				<button type="submit">Apply</button>
@@ -140,11 +141,11 @@
 						align-items: center;
 						justify-content: center;
 					}
-					ul{
+					ul {
 						list-style: none;
 						padding: 0;
-						li{
-							.fas{
+						li {
+							.fas {
 								margin-right: 5px;
 							}
 						}
@@ -161,7 +162,7 @@
 			align-items: center;
 			justify-content: center;
 			gap: 10px;
-			small{
+			small {
 				color: red;
 			}
 		}

@@ -1,8 +1,7 @@
 <script lang="ts">
-	import LoginForm from '$lib/components/LoginForm.svelte';
+	import Auth from '$lib/components/layouts/AuthLayout.svelte';
 	import type { ActionData } from './$types';
 	export let form: ActionData;
-	import Employee from '$lib/images/employee.png';
 </script>
 
-<LoginForm role="employee" {form} profile={Employee} />
+<Auth {form} role="employee" />

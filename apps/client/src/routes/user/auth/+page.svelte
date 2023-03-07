@@ -4,4 +4,4 @@
 	export let form: ActionData;
 </script>
 
-<Auth {form} role="admin" />
+<Auth {form} />

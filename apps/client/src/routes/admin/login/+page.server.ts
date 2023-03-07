@@ -1,6 +1,6 @@
 import { fail, redirect, error } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import { api } from '$lib/stores';
+import { api } from '$lib/constants';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	//If logged in redirect the user

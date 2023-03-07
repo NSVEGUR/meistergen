@@ -1,7 +1,7 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 import * as Sentry from '@sentry/node';
 import { BrowserTracing } from '@sentry/tracing';
-import { api } from '$lib/stores';
+import { api } from '$lib/constants';
 
 Sentry.init({
 	integrations: [new BrowserTracing()],

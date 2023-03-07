@@ -1,11 +1,11 @@
 <script lang="ts">
-	import "../styles.scss";
+	import '../app.postcss';
 	import { loading } from '$lib/stores';
 	import PageLoader from '$lib/components/PageLoader.svelte';
 </script>
 
 {#if $loading.status === 'LOADING'}
-	<PageLoader/>
+	<PageLoader />
 {:else}
-	<slot></slot>
+	<slot />
 {/if}

@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { api } from '$lib/stores';
+import { api } from '$lib/constants';
 import { json } from '@sveltejs/kit';
 
 export const GET = (async ({ params, locals }) => {

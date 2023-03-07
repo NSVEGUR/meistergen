@@ -1,6 +1,6 @@
 import { fail, redirect, error } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-import { api } from '$lib/stores';
+import { api } from '$lib/constants';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	//If logged in redirect the user
@@ -36,7 +36,7 @@ export const actions = {
 			cookies.set('user-token', user.token, {
 				path: '/'
 			});
-			throw redirect(302, '/user');
+			throw redirect(302, '/user/services');
 		}
 		if (`${response.status}`.startsWith('4')) {
 			return fail(400, { credentials: true });
