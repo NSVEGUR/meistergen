@@ -59,37 +59,3 @@
 		on:keydown={updateContent}
 	/>
 </main>
-
-<style lang="scss">
-	main {
-		border: 1px solid var(--color-border-base);
-		border-radius: 10px;
-		header {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 5px;
-			padding: 5px 0;
-			box-shadow: 0px 3px 3px var(--color-bg-muted);
-			button {
-				border: none;
-				outline: none;
-				padding: 5px;
-				background: none;
-				width: 30px;
-				border-radius: 2px;
-				&:hover {
-					background: var(--color-button-accent-transparent);
-					color: var(--color-text-inverted);
-				}
-			}
-		}
-		div {
-			min-height: 300px;
-			padding: 5px;
-		}
-		[contenteditable] {
-			outline: 0px solid transparent;
-		}
-	}
-</style>

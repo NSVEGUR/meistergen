@@ -50,13 +50,13 @@
 	</div>
 	{#if form}
 		{#if form.invalid}
-			<small class="text-error">Email and password is required</small>
+			<small class="text-skin-error">Email and password is required</small>
 		{/if}
 		{#if form.credentials}
-			<small class="text-error">Invalid email or password</small>
+			<small class="text-skin-error">Invalid email or password</small>
 		{/if}
 		{#if form.server}
-			<small class="text-error">Unknown error occurred</small>
+			<small class="text-skin-error">Unknown error occurred</small>
 		{/if}
 	{/if}
 	<button

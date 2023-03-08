@@ -11,7 +11,7 @@ Sentry.init({
 export const handle = (async ({ event, resolve }) => {
 	const route = event.route.id;
 	if (!route) return resolve(event);
-	const role = route.split('/')[1];
+	const role = route.split('/')[2];
 	const token = event.cookies.get(`${role}-token`);
 	if (!token) return resolve(event);
 	const response = await (

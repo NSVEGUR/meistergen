@@ -4,23 +4,31 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
-				dominant: 'var(--color-bg-dominant)',
-				complementary: 'var(--color-bg-complementary)',
-				accent: 'var(--color-bg-accent)',
-				hover: 'var(--color-bg-hover)',
-				muted: 'var(--color-bg-muted)',
-				error: 'var(--color-text-error)'
+				dominant: '#fefefe',
+				complementary: '#424242',
+				accent: '#5c17eb',
+				'light-accent': '#432287B5',
+				hover: '#6a2ee0',
+				muted: '#ebebeb',
+				'light-muted': 'rgba(0, 0, 0, 0.2)'
 			},
 			textColor: {
 				skin: {
-					base: 'var(--color-text-base)',
-					inverted: 'var(--color-text-inverted)',
-					muted: 'var(--color-text-muted)'
+					base: '#212427',
+					inverted: '#efefef',
+					muted: 'rgba(0, 0, 0, 0.5)',
+					error: '#d74c4c'
 				}
 			},
 			backgroundImage: {
-				'gradient-accent-to-tr': 'var(--color-gradient-accent-to-tr)',
-				'gradient-dominant': 'var(--color-gradient-dominant)'
+				'gradient-accent-to-tr': `linear-gradient(
+					to right top,
+					#222222,
+					#4b3c99,
+					#5032c3,
+					#5c17eb
+				)`,
+				'gradient-dominant': `linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)`
 			},
 			fontFamily: {
 				heading: 'var(--font-heading)',
