@@ -7,7 +7,6 @@
 	import HeaderMobile from '$lib/components/nav/HeaderMobile.svelte';
 	let route: string;
 	$: route = $page.route.id ?? '';
-	$: console.log(route);
 </script>
 
 <main class="h-screen w-screen overflow-hidden">
@@ -31,7 +30,8 @@
 				class="p-3 rounded-r-2xl {route == '/(user)/user/services' &&
 					'bg-accent font-bold text-skin-inverted'}"
 			>
-				<a href="/user/services" class="hover:no-underline w-full h-full margin-0 block">Personal</a
+				<a href="/user/services" class="hover:no-underline w-full h-full margin-0 block"
+					>Personal</a
 				>
 			</li>
 			<li
@@ -46,8 +46,9 @@
 				class="p-3 rounded-r-2xl {route.toString().includes('/user/services/available') &&
 					'bg-accent font-bold text-skin-inverted'}"
 			>
-				<a href="/user/services/available" class="hover:no-underline w-full h-full margin-0 block"
-					>Available services</a
+				<a
+					href="/user/services/available"
+					class="hover:no-underline w-full h-full margin-0 block">Available services</a
 				>
 			</li>
 		</ul>
@@ -69,8 +70,9 @@
 						? 'bg-accent hover:bg-accent text-skin-inverted font-bold'
 						: 'hover:bg-muted'}"
 				>
-					<a href="/user/services/all" class="hover:no-underline w-full h-full margin-0 block"
-						>All Services</a
+					<a
+						href="/user/services/all"
+						class="hover:no-underline w-full h-full margin-0 block">All Services</a
 					>
 				</li>
 				<li
@@ -78,7 +80,9 @@
 						? 'bg-accent hover:bg-accent text-skin-inverted font-bold'
 						: 'hover:bg-muted'}"
 				>
-					<a href="/user/services/available" class="hover:no-underline w-full h-full margin-0 block"
+					<a
+						href="/user/services/available"
+						class="hover:no-underline w-full h-full margin-0 block"
 						>Available services</a
 					>
 				</li>

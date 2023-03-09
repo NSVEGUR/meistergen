@@ -14,6 +14,9 @@
 	const recognizers = [StartUpIndia, Msme, Dipp];
 </script>
 
+<svelte:head>
+	<title>Meistergen - we build your future</title>
+</svelte:head>
 <main>
 	<section class="bg-[url('/src/lib/images/blog/hero.jpg')] w-screen bg-top bg-cover h-96">
 		<div class="backdrop-blur w-full h-full flex flex-col items-center justify-center gap-4">
@@ -24,32 +27,44 @@
 				<h1 class="text-center text-3xl font-heading font-black text-skin-base">
 					MEISTER-<span class="text-accent">GEN</span>
 				</h1>
-				<span class="text-skin-muted">Designing Innovative solutions for a better tommorrow</span>
+				<span class="text-skin-muted"
+					>Designing Innovative solutions for a better tommorrow</span
+				>
 			</div>
 			<a
 				class="p-2 text-skin-inverted border-2 bg-accent hover:bg-transparent hover:text-accent border-accent transition-all duration-200"
-				href="#about">Who We Are <i class="ml-2 fas fa-chevron-right" /></a
+				href="/about">Who We Are <i class="ml-2 fas fa-chevron-right" /></a
 			>
 		</div>
 	</section>
 	<section class="p-3 mb-4">
-		<h1 class="text-center font-bold text-3xl my-10">ASSOCIATES</h1>
+		<h1 class="text-center font-bold text-3xl my-10 font-heading">ASSOCIATES</h1>
 		<div class="grid w-full place-items-center grid-cols-4 -md:grid-cols-2 -sm:grid-cols-1">
 			{#each associates as associate}
 				<div
-					class="bg-dominant flex items-center justify-center p-5 hover:shadow-md cursor-pointer transition-all duration-200"
+					class="group bg-dominant flex items-center justify-center p-5 hover:shadow-md cursor-pointer transition-all duration-200"
 				>
-					<img class="h-16" src={associate} alt={associate} />
+					<img
+						class="h-16 grayscale group-hover:grayscale-0"
+						src={associate}
+						alt={associate}
+					/>
 				</div>
 			{/each}
 		</div>
-		<h1 class="text-center font-bold text-3xl my-10">RECOGNISED BY</h1>
-		<div class="grid w-full place-items-center grid-cols-3 gap-5 -md:grid-cols-2 -sm:grid-cols-1">
+		<h1 class="text-center font-bold text-3xl my-10 font-heading">RECOGNISED BY</h1>
+		<div
+			class="grid w-full place-items-center grid-cols-3 gap-5 -md:grid-cols-2 -sm:grid-cols-1"
+		>
 			{#each recognizers as recognizer}
 				<div
-					class="bg-dominant flex items-center justify-center p-5 hover:shadow-md cursor-pointer transition-all duration-200"
+					class="group bg-dominant flex items-center justify-center p-5 hover:shadow-md cursor-pointer transition-all duration-200"
 				>
-					<img class="h-16" src={recognizer} alt={recognizer} />
+					<img
+						class="h-16 grayscale group-hover:grayscale-0"
+						src={recognizer}
+						alt={recognizer}
+					/>
 				</div>
 			{/each}
 		</div>
@@ -66,7 +81,8 @@
 					<p>To bring life to technology that is accepted by ecosystem</p>
 					<h1 class="font-heading font-black text-3xl">Mission</h1>
 					<p>
-						To create products that make a difference in people’s and make the world a better place
+						To create products that make a difference in people’s and make the world a
+						better place
 					</p>
 				</div>
 				<div class="border-t-[1px] border-light-muted" />
@@ -92,7 +108,9 @@
 			</div>
 		</div>
 		<div class="flex justify-start -sm:flex-col -sm:gap-5">
-			<div class="w-1/2 flex flex-col gap-4 items-start justify-start px-20 -sm:w-full -sm:px-5">
+			<div
+				class="w-1/2 flex flex-col gap-4 items-start justify-start px-20 -sm:w-full -sm:px-5"
+			>
 				<div class="h-1 w-16 bg-accent" />
 				<h1 class="font-heading font-black text-5xl">Our Expertise</h1>
 				<span>Our expertise span across multiple fields, including</span>
@@ -128,20 +146,23 @@
 							GeoRes (Septic and Sewage Monitoring System)
 						</h1>
 						<p class="text-skin-muted leading-7">
-							An innovative ERY-based solution that detects septic tank leak and sewage line block
-							at an early stage for a safety and healthy environment
+							An innovative ERY-based solution that detects septic tank leak and
+							sewage line block at an early stage for a safety and healthy environment
 						</p>
 					</div>
 				</div>
 				<div class="flex gap-4 border-b-[1px] border-light-muted pb-5 -sm:flex-col">
 					<h1 class="font-heading font-black text-2xl text-accent">2022</h1>
 					<div class="flex flex-col gap-2">
-						<h1 class="font-heading font-black text-2xl">Cloud based Home Automation</h1>
+						<h1 class="font-heading font-black text-2xl">
+							Cloud based Home Automation
+						</h1>
 						<p class="text-skin-muted leading-7">
-							A unique solution that transforms standard home appliances into cloud-accessible IoT
-							devices, enabling homeowners to control and monitor them remotely from any
-							internet-enabled device. With this solution, we aim to make every home a smart home,
-							without the need for expensive, specialized IoT equipment.
+							A unique solution that transforms standard home appliances into
+							cloud-accessible IoT devices, enabling homeowners to control and monitor
+							them remotely from any internet-enabled device. With this solution, we
+							aim to make every home a smart home, without the need for expensive,
+							specialized IoT equipment.
 						</p>
 					</div>
 				</div>
@@ -150,7 +171,8 @@
 					<div class="flex flex-col gap-2">
 						<h1 class="font-heading font-black text-2xl">JAVE (Next Dimension OTT)</h1>
 						<p class="text-skin-muted leading-7">
-							Advanced OTT platform with character perspective experience for movies and web series.
+							Advanced OTT platform with character perspective experience for movies
+							and web series.
 						</p>
 					</div>
 				</div>
@@ -161,9 +183,9 @@
 							Reconfigurable Steganographic System (FPGA)
 						</h1>
 						<p class="text-skin-muted leading-7">
-							Real-Time Video watermarking system for steganography application. Reconfigurable IP
-							that encodes the information in real-time for information security in Image / Video
-							applications.
+							Real-Time Video watermarking system for steganography application.
+							Reconfigurable IP that encodes the information in real-time for
+							information security in Image / Video applications.
 						</p>
 					</div>
 				</div>
@@ -191,7 +213,9 @@
 		<div class="flex p-20 gap-10 -sm:flex-col -sm:p-5 -sm:mb-5">
 			<div class="w-1/2 flex flex-col gap-10 self-end -sm:w-full -sm:self-start">
 				<div class="h-1 w-16 bg-accent self-end -sm:self-start" />
-				<h1 class="font-heading font-black text-5xl text-right -sm:text-left">Recent Updates</h1>
+				<h1 class="font-heading font-black text-5xl text-right -sm:text-left">
+					Recent Updates
+				</h1>
 			</div>
 			<div class="w-1/2 self-center -sm:w-full">
 				<a
@@ -217,7 +241,8 @@
 				class="relative before:absolute before:-top-10 before:content-['\201C'] before:text-accent before:font-heading before:text-6xl before:font-black flex flex-col gap-4"
 			>
 				<p class="font-black text-lg">
-					Character perspective cinematic experience with an next dimensional OTT platform.
+					Character perspective cinematic experience with an next dimensional OTT
+					platform.
 				</p>
 				<div class="flex gap-2 items-center font-secondary font-black">
 					<img class="w-10 h-10 object-cover rounded-full" src={Jave} alt="jave" />
@@ -228,7 +253,8 @@
 				class="relative before:absolute before:-top-10 before:content-['\201C'] before:text-accent before:font-heading before:text-6xl before:font-black flex flex-col gap-4"
 			>
 				<p class="font-black text-lg">
-					Reconfigurable home automation with cloud accessible solution for non IoT devices
+					Reconfigurable home automation with cloud accessible solution for non IoT
+					devices
 				</p>
 				<div class="flex gap-2 items-center font-secondary font-black">
 					<img
@@ -243,10 +269,15 @@
 				class="relative before:absolute before:-top-10 before:content-['\201C'] before:text-accent before:font-heading before:text-6xl before:font-black flex flex-col gap-4"
 			>
 				<p class="font-black text-lg">
-					Incubated in IITM Incubation Cell associated with Pravartak Technologies Foundation
+					Incubated in IITM Incubation Cell associated with Pravartak Technologies
+					Foundation
 				</p>
 				<div class="flex gap-2 items-center font-secondary font-black">
-					<img class="w-10 h-10 object-cover rounded-full" src={Pravartak} alt="pravartak" />
+					<img
+						class="w-10 h-10 object-cover rounded-full"
+						src={Pravartak}
+						alt="pravartak"
+					/>
 					<span class="text-skin-muted">INCUBATED</span>
 				</div>
 			</div>
