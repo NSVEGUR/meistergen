@@ -5,5 +5,5 @@ export const load: PageServerLoad = async ({ cookies }) => {
 	cookies.delete('user-token', {
 		path: '/'
 	});
-	throw redirect(302, '/user/auth');
+	throw redirect(302, '/');
 };

@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions = {
-	validate: async ({ request, cookies }) => {
+	login: async ({ request, cookies }) => {
 		const form = await request.formData();
 		const email = form.get('email');
 		const password = form.get('password');
@@ -37,6 +37,49 @@ export const actions = {
 				path: '/'
 			});
 			throw redirect(302, '/user/services');
+		}
+		if (`${response.status}`.startsWith('4')) {
+			return fail(400, { credentials: true });
+		}
+		if (`${response.status}`.startsWith('5')) {
+			return fail(500, { server: true });
+		}
+		throw error(404, 'Not found');
+	},
+	signup: async ({ request }) => {
+		const form = await request.formData();
+		const email = form.get('email');
+		const password = form.get('password');
+		const confirmPassword = form.get('confirm-password');
+		if (
+			typeof email !== 'string' ||
+			typeof password !== 'string' ||
+			typeof confirmPassword !== 'string' ||
+			!email ||
+			!password ||
+			!confirmPassword
+		) {
+			return fail(400, { invalid: true });
+		}
+		if (password !== confirmPassword) {
+			return fail(400, { notMatching: true });
+		}
+		const data = {
+			email,
+			password,
+			role: 'USER'
+		};
+		const response = await (
+			await fetch(`${api}/user/signup`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+		).json();
+		if (response.status === 201) {
+			throw redirect(302, '/user/auth');
 		}
 		if (`${response.status}`.startsWith('4')) {
 			return fail(400, { credentials: true });

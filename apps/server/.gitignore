@@ -2,6 +2,5 @@ node_modules/
 dist/
 *.env
 .DS_Store
-prisma/migrations
 file_store
-src/data
+prisma/seed

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync.util';
-import { prisma } from '../../server';
+import prisma from '../../../prisma';
 
 const getAvailable = catchAsync(async function (
 	req: Request,

@@ -4,14 +4,10 @@ importers:
 
   .:
     specifiers:
-      eslint: ^8.0.0
-      eslint-config-custom: workspace:*
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.7.0
       turbo: ^1.8.3
     devDependencies:
-      eslint: 8.28.0
-      eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.0
       prettier-plugin-svelte: 2.8.1_cqvcdlirt2zplyfporvsoarw6m
       turbo: 1.8.3
@@ -24,7 +20,8 @@ importers:
       '@sveltejs/adapter-auto': ^2.0.0
       '@sveltejs/kit': ^1.5.0
       autoprefixer: ^10.4.7
-      eslint-config-custom: workspace:*
+      config: workspace:*
+      eslint: ^8.0.0
       postcss: ^8.4.14
       postcss-load-config: ^4.0.1
       svelte: ^3.54.0
@@ -42,7 +39,8 @@ importers:
       '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.8.3
       '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.0.0
       autoprefixer: 10.4.13_postcss@8.4.19
-      eslint-config-custom: link:../../packages/eslint-config-custom
+      config: link:../../packages/config
+      eslint: 8.28.0
       postcss: 8.4.19
       postcss-load-config: 4.0.1_postcss@8.4.19
       svelte: 3.55.1
@@ -55,7 +53,7 @@ importers:
 
   apps/server:
     specifiers:
-      '@prisma/client': ^4.10.0
+      '@prisma/client': ^4.11.0
       '@types/bcryptjs': ^2.4.2
       '@types/cors': ^2.8.13
       '@types/express': ^4.17.17
@@ -65,22 +63,25 @@ importers:
       '@types/multer': ^1.4.7
       '@types/node': ^18.13.0
       bcryptjs: ^2.4.3
+      config: workspace:*
       cors: ^2.8.5
       dotenv: ^16.0.3
+      eslint: ^8.0.0
       express: ^4.18.2
       helmet: ^6.0.1
       hpp: ^0.2.3
       jsonwebtoken: ^9.0.0
       morgan: ^1.10.0
       multer: ^1.4.5-lts.1
-      prisma: ^4.10.1
+      prisma: ^4.11.0
       puppeteer: ^19.7.2
       ts-node: ^10.9.1
       ts-node-dev: ^2.0.0
+      tsconfig: workspace:*
       typescript: ^4.9.5
       xss-clean: ^0.1.1
     dependencies:
-      '@prisma/client': 4.10.1_prisma@4.10.1
+      '@prisma/client': 4.11.0_prisma@4.11.0
       bcryptjs: 2.4.3
       cors: 2.8.5
       dotenv: 16.0.3
@@ -101,12 +102,15 @@ importers:
       '@types/morgan': 1.9.4
       '@types/multer': 1.4.7
       '@types/node': 18.14.1
-      prisma: 4.10.1
+      config: link:../../packages/config
+      eslint: 8.28.0
+      prisma: 4.11.0
       ts-node: 10.9.1_uayvamxqnl5yeiojjysxwopmsy
       ts-node-dev: 2.0.0_uayvamxqnl5yeiojjysxwopmsy
+      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
-  packages/eslint-config-custom:
+  packages/config:
     specifiers:
       '@typescript-eslint/eslint-plugin': ^5.27.0
       '@typescript-eslint/parser': ^5.27.0
@@ -119,6 +123,9 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.28.0
       eslint-config-turbo: 0.0.9_eslint@8.28.0
       eslint-plugin-svelte3: 4.0.0_zl5wch5vo255wuylks3ryf7uge
+
+  packages/tsconfig:
+    specifiers: {}
 
 packages:
 
@@ -432,8 +439,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@prisma/client/4.10.1_prisma@4.10.1:
-    resolution: {integrity: sha512-VonXLJZybdt8e5XZH5vnIGCRNnIh6OMX1FS3H/yzMGLT3STj5TJ/OkMcednrvELgk8PK89Vo3aSh51MWNO0axA==}
+  /@prisma/client/4.11.0_prisma@4.11.0:
+    resolution: {integrity: sha512-0INHYkQIqgAjrt7NzhYpeDQi8x3Nvylc2uDngKyFDDj1tTRQ4uV1HnVmd1sQEraeVAN63SOK0dgCKQHlvjL0KA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -442,16 +449,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
-      prisma: 4.10.1
+      '@prisma/engines-version': 4.11.0-57.8fde8fef4033376662cad983758335009d522acb
+      prisma: 4.11.0
     dev: false
 
-  /@prisma/engines-version/4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19:
-    resolution: {integrity: sha512-tsjTho7laDhf9EJ9EnDxAPEf7yrigSMDhniXeU4YoWc7azHAs4GPxRi2P9LTFonmHkJLMOLjR77J1oIP8Ife1w==}
+  /@prisma/engines-version/4.11.0-57.8fde8fef4033376662cad983758335009d522acb:
+    resolution: {integrity: sha512-3Vd8Qq06d5xD8Ch5WauWcUUrsVPdMC6Ge8ILji8RFfyhUpqon6qSyGM0apvr1O8n8qH8cKkEFqRPsYjuz5r83g==}
     dev: false
 
-  /@prisma/engines/4.10.1:
-    resolution: {integrity: sha512-B3tcTxjx196nuAu1GOTKO9cGPUgTFHYRdkPkTS4m5ptb2cejyBlH9X7GOfSt3xlI7p4zAJDshJP4JJivCg9ouA==}
+  /@prisma/engines/4.11.0:
+    resolution: {integrity: sha512-0AEBi2HXGV02cf6ASsBPhfsVIbVSDC9nbQed4iiY5eHttW9ZtMxHThuKZE1pnESbr8HRdgmFSa/Kn4OSNYuibg==}
     requiresBuild: true
 
   /@sentry/core/7.38.0:
@@ -2461,13 +2468,13 @@ packages:
     hasBin: true
     dev: true
 
-  /prisma/4.10.1:
-    resolution: {integrity: sha512-0jDxgg+DruB1kHVNlcspXQB9au62IFfVg9drkhzXudszHNUAQn0lVuu+T8np0uC2z1nKD5S3qPeCyR8u5YFLnA==}
+  /prisma/4.11.0:
+    resolution: {integrity: sha512-4zZmBXssPUEiX+GeL0MUq/Yyie4ltiKmGu7jCJFnYMamNrrulTBc+D+QwAQSJ01tyzeGHlD13kOnqPwRipnlNw==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.10.1
+      '@prisma/engines': 4.11.0
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}

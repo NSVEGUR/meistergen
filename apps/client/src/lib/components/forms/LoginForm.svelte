@@ -7,7 +7,7 @@
 
 <form
 	class="flex flex-col items-start justify-center gap-5 w-full -lg:items-center"
-	action="?/validate"
+	action="?/login"
 	method="POST"
 	use:enhance
 >

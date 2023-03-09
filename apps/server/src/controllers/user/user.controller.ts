@@ -4,7 +4,7 @@ import AppError from '../../utils/appError.util';
 import Crypto from '../../utils/crypto.util';
 import prismaExclude from '../../utils/prismaExclude.util';
 
-import { prisma } from '../../server';
+import prisma from '../../../prisma';
 import puppeteer from 'puppeteer';
 import config from '../../config';
 

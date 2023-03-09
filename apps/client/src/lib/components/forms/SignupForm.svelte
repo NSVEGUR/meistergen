@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { applyAction, enhance } from '$app/forms';
 	import Google from '$lib/images/google.png';
+	import { loading } from '$lib/stores';
 	export let form: any;
 	let visibility = false;
 	let visibilityConfirm = false;
@@ -8,9 +9,25 @@
 
 <form
 	class="flex flex-col items-start justify-center gap-5 w-full -lg:items-center"
-	action="?/validate"
+	action="?/signup"
 	method="POST"
-	use:enhance
+	use:enhance={() => {
+		loading.setLoading(true, `SigningUp..🚀. Please don't refresh or close the page👀¯`);
+		return async ({ result }) => {
+			if (result.type == 'redirect') {
+				loading.setLoading(true, 'SignedUp ...✅');
+				await (async () => {
+					setTimeout(async () => {
+						loading.setLoading(false);
+						await applyAction(result);
+					}, 1500);
+				})();
+			} else {
+				loading.setLoading(false);
+				await applyAction(result);
+			}
+		};
+	}}
 >
 	<div class="flex flex-col gap-1 w-1/2 -xl:w-2/3 -sm:w-full">
 		<label for="email">Email</label>
@@ -74,13 +91,13 @@
 	</div>
 	{#if form}
 		{#if form.invalid}
-			<small>Email and password is required</small>
+			<small class="text-skin-error">Email and password is required</small>
 		{/if}
 		{#if form.credentials}
-			<small>Invalid email or password</small>
+			<small class="text-skin-error">Invalid email or password</small>
 		{/if}
 		{#if form.notMatching}
-			<small>Passwords are not matching</small>
+			<small class="text-skin-error">Passwords are not matching</small>
 		{/if}
 	{/if}
 	<button

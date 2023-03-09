@@ -17,7 +17,8 @@ const config = {
 					base: '#212427',
 					inverted: '#efefef',
 					muted: 'rgba(0, 0, 0, 0.5)',
-					error: '#d74c4c'
+					error: '#d74c4c',
+					okay: '#2DB00C'
 				}
 			},
 			backgroundImage: {
